@@ -151,9 +151,9 @@ section:not(.drape) .divider svg{color:var(--leaf)}
 const $=s=>document.querySelector(s);
 const WEDDING=new Date('2026-12-27T07:00:00+07:00');
 // Taruh foto di folder foto/ lalu sesuaikan nama file di bawah ini
-const FOTO={hero:'foto/utama.jpg',pria:'foto/pria.jpg',wanita:'foto/wanita.jpg'};
-const PHOTOS=['foto/1.jpg','foto/2.jpg','foto/3.jpg','foto/4.jpg','foto/5.jpg','foto/6.jpg'];
-const AUDIO_SRC=''; // isi dengan URL file mp3 Anda; kosong = nada ambient bawaan
+const FOTO={hero:'foto/utama.jpeg',pria:'foto/pria.jpeg',wanita:'foto/wanita.jpeg'};
+const PHOTOS=['foto/1.jpeg','foto/2.jpeg','foto/3.jpeg','foto/4.jpeg','foto/5.jpeg','foto/6.jpeg'];
+const AUDIO_SRC='musik/lagu.mp3'; // isi dengan URL file mp3 Anda; kosong = nada ambient bawaan
 
 // Nama tamu
 try{const t=new URLSearchParams(location.search).get('to');if(t&&t.trim())$('#guest').textContent=t.trim().slice(0,60)}catch(e){}
