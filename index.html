@@ -252,7 +252,7 @@ document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{const tx
   toast('Nomor rekening berhasil disalin!')});
 
 // Guestbook
-let wishes=[{n:'Rina & Keluarga',s:'Hadir',m:'Selamat menempuh hidup baru! Semoga sakinah, mawaddah, warahmah.'},{n:'Budi Santoso',s:'Hadir',m:'Barakallahu lakuma, bahagia selalu untuk kalian berdua.'}];
+let wishes=[{n:'Joko & Keluarga',s:'Hadir',m:'Selamat menempuh hidup baru! Semoga sakinah, mawaddah, warahmah.'},{n:'Subianto',s:'Hadir',m:'Barakallahu lakuma, bahagia selalu untuk kalian berdua.'}];
 try{const s=JSON.parse(localStorage.getItem('wishes')||'null');if(Array.isArray(s))wishes=s}catch(e){}
 function render(){const f=$('#feed');f.innerHTML='';wishes.forEach(w=>{const d=document.createElement('div');d.className='card';d.style.padding='1rem';d.style.color='var(--ink)';
   const h=document.createElement('p');h.className='font-semibold text-sm';h.textContent=w.n;const b=document.createElement('span');b.className='text-xs gold ml-2';b.textContent='• '+w.s;h.appendChild(b);
