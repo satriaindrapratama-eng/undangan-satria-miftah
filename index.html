@@ -81,6 +81,10 @@ section:not(.drape) .divider svg{color:var(--leaf)}
 .orn:not(.drape)>.fl{filter:drop-shadow(0 4px 7px rgba(70,0,24,.28))}
 .card:not(.lace){outline:1px solid color-mix(in srgb,#d4af37 75%,transparent);outline-offset:-7px}
 #gal .frame{border:0;outline:0}
+#gal{display:block!important;columns:2;column-gap:12px;max-width:48rem;margin-left:auto;margin-right:auto}
+#gal>.ph{display:flex;width:100%;margin-bottom:12px;break-inside:avoid;background-size:cover}
+@media(min-width:768px){#gal{columns:3}}
+#lbImg{background-size:contain;background-repeat:no-repeat;background-position:center;background-color:transparent;border:0;outline:0}
 </style>
 </head>
 <body class="lock">
@@ -233,9 +237,9 @@ tick();setInterval(tick,1000);
 
 // Galeri + lightbox
 let cur=0;const ok={};
-function applyPhoto(el,src,i){const im=new Image();im.onload=()=>{el.style.backgroundImage="url('"+src+"')";el.innerHTML='';if(i!=null)ok[i]=1};im.src=src}
+function applyPhoto(el,src,i){const im=new Image();im.onload=()=>{el.style.backgroundImage="url('"+src+"')";el.innerHTML='';if(i!=null){ok[i]=1;el.style.aspectRatio=im.naturalWidth+'/'+im.naturalHeight}};im.src=src}
 applyPhoto($('#heroPhoto'),FOTO.hero);applyPhoto($('#fotoPria'),FOTO.pria);applyPhoto($('#fotoWanita'),FOTO.wanita);
-$('#gal').innerHTML=PHOTOS.map((_,i)=>`<div class="ph frame rounded-xl rv cursor-pointer ${i%3==0?'row-span-2 h-64':'h-32 sm:h-40'}" data-i="${i}" ><svg width="34" height="34"><use href="#leaf"/></svg></div>`).join('');document.querySelectorAll('#gal [data-i]').forEach(t=>applyPhoto(t,PHOTOS[+t.dataset.i],+t.dataset.i));
+$('#gal').innerHTML=PHOTOS.map((_,i)=>`<div class="ph frame rounded-xl rv cursor-pointer" style="aspect-ratio:2/3" data-i="${i}" ><svg width="34" height="34"><use href="#leaf"/></svg></div>`).join('');document.querySelectorAll('#gal [data-i]').forEach(t=>applyPhoto(t,PHOTOS[+t.dataset.i],+t.dataset.i));
 function show(i){cur=(i+PHOTOS.length)%PHOTOS.length;const e=$('#lbImg');e.style.backgroundImage=ok[cur]?"url('"+PHOTOS[cur]+"')":'';e.innerHTML=ok[cur]?'':'<svg width="64" height="64"><use href="#leaf"/></svg>'}
 $('#gal').onclick=e=>{const t=e.target.closest('[data-i]');if(t){show(+t.dataset.i);$('#lb').style.display='flex'}};
 $('#lbX').onclick=()=>$('#lb').style.display='none';
